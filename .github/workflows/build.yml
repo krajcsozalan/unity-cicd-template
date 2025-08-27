@@ -58,6 +58,10 @@ jobs:
           path: build
           pattern: |
             !github-pages
+      - name: Package builds
+        working-directory: build
+        run: |
+          for TARGET in *; do zip -r ../$TARGET.zip $TARGET; done
       - name: Set up Node.js
         uses: actions/setup-node@v4
       - name: Create release
